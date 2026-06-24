@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — Circuit Hero</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+  <div class="page-wrapper page-bg-gradient">
+    <div class="page-content">
+
+      <!-- Header -->
+      <header class="site-header">
+        <a href="index.html" class="header-left">
+          <div class="logo-icon">
+            <img src="assets/icons/logo-lightning.svg" alt="Circuit Hero logo" width="20" height="20">
+          </div>
+          <div class="logo-text">
+            <span class="logo-title">Circuit Hero</span>
+            <span class="logo-subtitle">QHE6102 . TEAM J</span>
+          </div>
+        </a>
+        <div class="header-right">
+          <div class="header-actions">
+            <a href="index.html" class="btn btn-secondary btn-sm">Back to Home</a>
+          </div>
+        </div>
+      </header>
+
+      <div class="divider"></div>
+
+      <!-- Login Main -->
+      <div class="login-main">
+        <!-- Floating stars decoration -->
+        <div class="floating-stars">
+          <span class="float-star s1"></span>
+          <span class="float-star s2"></span>
+          <span class="float-star s3"></span>
+          <span class="float-star s4"></span>
+          <span class="float-star s5"></span>
+          <span class="float-star s6"></span>
+          <span class="float-star s7"></span>
+          <span class="float-star s8"></span>
+        </div>
+
+        <!-- Login Card -->
+        <div class="login-card card-elevated">
+          <div class="login-card-header">
+            <div class="login-terminal-label pixel-label">AUTH TERMINAL . CIRCUIT HERO</div>
+            <div class="login-gold-star">
+              <img src="assets/icons/star.svg" alt="" width="24" height="24">
+            </div>
+          </div>
+
+          <div class="login-tabs">
+            <button class="login-tab active" data-tab="login">Log In</button>
+            <button class="login-tab" data-tab="signup">Sign Up</button>
+          </div>
+
+          <form class="login-form" id="loginForm">
+            <div class="form-field">
+              <label class="form-label">Username</label>
+              <input type="text" class="form-input" id="username" placeholder="Enter your username" required>
+            </div>
+            <div class="form-field">
+              <label class="form-label">Password</label>
+              <input type="password" class="form-input" id="password" placeholder="Enter your password" required>
+            </div>
+            <div class="form-options">
+              <label class="form-checkbox">
+                <input type="checkbox" checked>
+                <span class="checkbox-custom"></span>
+                <span>Remember me</span>
+              </label>
+              <a href="#" class="form-link">Forgot password?</a>
+            </div>
+            <button type="submit" class="btn btn-cta login-submit">
+              <img src="assets/icons/logo-lightning.svg" alt="" width="16" height="16">
+              Log In
+            </button>
+          </form>
+
+          <form class="login-form hidden" id="signupForm">
+            <div class="form-field">
+              <label class="form-label">Username</label>
+              <input type="text" class="form-input" id="signup-username" placeholder="Choose a username" required>
+            </div>
+            <div class="form-field">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-input" id="signup-email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-field">
+              <label class="form-label">Password</label>
+              <input type="password" class="form-input" id="signup-password" placeholder="Create a password" required>
+            </div>
+            <button type="submit" class="btn btn-cta login-submit">
+              <img src="assets/icons/logo-lightning.svg" alt="" width="16" height="16">
+              Sign Up
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <div class="footer-left">
+          <div class="footer-logo">
+            <div class="footer-logo-icon">
+              <img src="assets/icons/logo-lightning.svg" alt="Circuit Hero" width="14" height="14">
+            </div>
+            <span class="footer-copyright">&copy; 2026 Circuit Hero — QHE6102 Team J</span>
+          </div>
+        </div>
+        <div class="footer-links">
+          <a href="#">Accessibility</a>
+          <a href="#">Privacy</a>
+          <a href="#">Contact</a>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+  <script src="js/pages/login.js"></script>
+</body>
+</html>

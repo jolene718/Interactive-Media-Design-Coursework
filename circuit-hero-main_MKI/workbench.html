@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1-1 First Light — Circuit Hero</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/workbench.css">
+</head>
+<body>
+  <div class="page-wrapper page-bg-gradient">
+    <div class="page-content" style="padding: 0 260px; height: 100vh;">
+
+      <!-- Top Bar -->
+      <div class="top-bar">
+        <div class="top-left">
+          <a href="mission-briefing.html?level=1-1" class="btn btn-secondary btn-sm back-btn" id="backBtn">
+            <img src="assets/icons/arrow-back.svg" alt="" width="14" height="14">
+            Back
+          </a>
+          <div class="level-info">
+            <span class="level-id-badge pixel-label" id="levelIdBadge">1-1</span>
+            <span class="level-name-text" id="levelNameText">First Light</span>
+          </div>
+        </div>
+        <div class="top-center">
+          <div class="timer-pill">
+            <span class="timer-dot"></span>
+            <span class="timer-text terminal-text" id="timerDisplay">00:00</span>
+          </div>
+        </div>
+        <div class="top-right">
+          <button class="btn btn-secondary btn-sm hint-btn" id="hintBtn">
+            <img src="assets/icons/help.svg" alt="" width="16" height="16">
+            Hint
+            <span class="hint-cost">-1 star</span>
+          </button>
+          <div class="stars" id="starDisplay">
+            <svg class="star star-empty" viewBox="0 0 18 18"><path d="M9 1l2.2 4.5 4.8.7-3.5 3.4.8 4.9L9 12.2 4.7 14.5l.8-4.9L2 6.2l4.8-.7z" fill="currentColor"/></svg>
+            <svg class="star star-empty" viewBox="0 0 18 18"><path d="M9 1l2.2 4.5 4.8.7-3.5 3.4.8 4.9L9 12.2 4.7 14.5l.8-4.9L2 6.2l4.8-.7z" fill="currentColor"/></svg>
+            <svg class="star star-empty" viewBox="0 0 18 18"><path d="M9 1l2.2 4.5 4.8.7-3.5 3.4.8 4.9L9 12.2 4.7 14.5l.8-4.9L2 6.2l4.8-.7z" fill="currentColor"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Main Area -->
+      <div class="main-area">
+        <!-- Left Panel: Components -->
+        <div class="panel panel-left">
+          <div class="panel-header">
+            <span class="panel-title">Components</span>
+            <span class="panel-label pixel-label">PARTS BIN</span>
+          </div>
+          <div class="component-list" id="componentList">
+            <div class="component-item" data-type="battery" draggable="true">
+              <div class="comp-icon comp-icon-battery">
+                <svg width="24" height="16" viewBox="0 0 32 20"><rect x="2" y="3" width="24" height="14" rx="3" fill="#A0A0A0" stroke="#5D4037" stroke-width="2"/><rect x="26" y="6" width="4" height="8" rx="1" fill="#C0C0C0" stroke="#5D4037" stroke-width="1.5"/><text x="8" y="14" fill="#E74C3C" font-size="10" font-weight="bold">+</text><text x="20" y="14" fill="#333" font-size="10" font-weight="bold">-</text></svg>
+              </div>
+              <span class="comp-name">Battery</span>
+              <span class="comp-count">x1</span>
+            </div>
+            <div class="component-item" data-type="bulb" draggable="true" id="bulbPanelItem">
+              <div class="comp-icon comp-icon-bulb">
+                <svg width="16" height="22" viewBox="0 0 20 28"><ellipse cx="10" cy="11" rx="8" ry="9" fill="#E0E0E0" stroke="#5D4037" stroke-width="2"/><rect x="6" y="19" width="8" height="5" rx="1" fill="#A0A0A0" stroke="#5D4037" stroke-width="1.5"/><line x1="8" y1="20" x2="8" y2="24" stroke="#5D4037" stroke-width="1"/><line x1="10" y1="20" x2="10" y2="24" stroke="#5D4037" stroke-width="1"/><line x1="12" y1="20" x2="12" y2="24" stroke="#5D4037" stroke-width="1"/></svg>
+              </div>
+              <span class="comp-name">Bulb</span>
+              <span class="comp-count">x1</span>
+            </div>
+            <div class="component-item" data-type="wire" draggable="false">
+              <div class="comp-icon">
+                <svg width="20" height="4" viewBox="0 0 28 4"><rect width="28" height="4" rx="2" fill="#A0A0A0" stroke="#5D4037" stroke-width="1"/></svg>
+              </div>
+              <span class="comp-name">Wire</span>
+              <span class="comp-count">∞</span>
+            </div>
+            <div class="component-item locked" data-type="switch" draggable="false">
+              <div class="comp-icon comp-icon-switch">
+                <svg width="20" height="16" viewBox="0 0 28 20"><rect x="2" y="2" width="24" height="16" rx="3" fill="#A0A0A0" stroke="#5D4037" stroke-width="2" opacity="0.4"/><line x1="8" y1="14" x2="18" y2="5" stroke="#5D4037" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/></svg>
+              </div>
+              <span class="comp-name" style="opacity:0.5">Switch</span>
+              <span class="comp-lock">
+                <img src="assets/icons/lock.svg" alt="Locked" width="12" height="12">
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Center Stage -->
+        <div class="stage" id="stage">
+          <div class="stage-instruction" id="stageInstruction">
+            <span class="terminal-text">Drag components onto the board. Click <svg width="12" height="12" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" fill="#5D4037"/></svg> ports to wire.</span>
+            <button class="stage-help-close" id="helpClose">✕</button>
+          </div>
+          <div class="stage-grid" id="stageGrid">
+            <canvas id="gridCanvas"></canvas>
+            <canvas id="wireCanvas"></canvas>
+            <canvas id="particleCanvas"></canvas>
+            <div id="componentsLayer"></div>
+          </div>
+          <!-- Sparky Tutorial Bubble -->
+          <div class="sparky-bubble hidden" id="sparkyBubble">
+            <div class="sparky-avatar">
+              <img src="assets/images/sparky-sprite.png" alt="Sparky" style="width:40px;height:40px;object-fit:contain;">
+            </div>
+            <div class="sparky-text" id="sparkyText"></div>
+            <button class="sparky-continue" id="sparkyContinue">I got it!</button>
+          </div>
+        </div>
+
+        <!-- Right Panel: Tools -->
+        <div class="panel panel-right">
+          <div class="panel-header">
+            <span class="panel-title">Tools</span>
+            <span class="panel-label pixel-label">WORKBENCH</span>
+          </div>
+          <div class="tool-list">
+            <button class="tool-btn" id="undoBtn" title="Undo">
+              <img src="assets/icons/undo.svg" alt="" width="18" height="18">
+              <span>Undo</span>
+              <span class="kbd">Ctrl+Z</span>
+            </button>
+            <button class="tool-btn" id="redoBtn" title="Redo">
+              <img src="assets/icons/redo.svg" alt="" width="18" height="18">
+              <span>Redo</span>
+              <span class="kbd">Ctrl+Y</span>
+            </button>
+            <button class="tool-btn" id="deleteBtn" title="Delete">
+              <img src="assets/icons/delete.svg" alt="" width="18" height="18">
+              <span>Delete</span>
+              <span class="kbd">Del</span>
+            </button>
+            <div class="tool-divider"></div>
+            <button class="tool-btn tool-danger" id="clearBtn" title="Clear All">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Clear All</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="bottom-bar">
+        <div class="bottom-left">
+          <span class="status-dot" id="statusDot"></span>
+          <span class="status-text terminal-text" id="statusText">Circuit open — wire up both terminals to complete the loop.</span>
+        </div>
+        <div class="bottom-center">
+          <button class="btn power-btn" id="powerBtn">
+            <img src="assets/icons/logo-lightning.svg" alt="" width="20" height="20">
+            Power On!
+          </button>
+        </div>
+        <div class="bottom-right">
+          <span class="hint-text">Press <span class="kbd">SPACE</span> to power on</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div class="modal-overlay hidden" id="successModal">
+    <div class="modal-card success-modal">
+      <div class="success-header">
+        <div class="success-icon">&#127775;</div>
+        <h2 class="success-title">Circuit Complete!</h2>
+      </div>
+      <div class="success-stars" id="resultStars"></div>
+      <div class="success-dialogue" id="successDialogue"></div>
+      <div class="knowledge-card" id="knowledgeCard">
+        <div class="knowledge-title" id="knowledgeTitle">
+          <img src="assets/icons/logo-lightning.svg" alt="" width="16" height="16">
+          Knowledge: Closed Circuit
+        </div>
+        <ul class="knowledge-list" id="knowledgeList">
+          <li>Current flows from battery (+) terminal</li>
+          <li>Passes through a load (like a bulb)</li>
+          <li>Returns to battery (-) terminal</li>
+          <li>This complete path is a "closed circuit"</li>
+          <li>The circuit must be closed for current to flow</li>
+        </ul>
+        <p class="knowledge-motto" id="knowledgeMotto">Remember: electricity needs a complete loop!</p>
+      </div>
+      <div class="success-actions">
+        <a href="story-map.html" class="btn btn-secondary">Back to Map</a>
+        <a href="#" class="btn btn-cta" onclick="location.reload()">Play Again</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data/level-config.js"></script>
+  <script src="js/game/grid.js"></script>
+  <script src="js/game/components.js"></script>
+  <script src="js/game/drag-drop.js"></script>
+  <script src="js/game/wiring.js"></script>
+  <script src="js/game/circuit-engine.js"></script>
+  <script src="js/game/particle-system.js"></script>
+  <script src="js/game/undo-redo.js"></script>
+  <script src="js/game/success-feedback.js"></script>
+  <script src="js/components/tutorial.js"></script>
+  <script src="js/pages/workbench.js"></script>
+</body>
+</html>

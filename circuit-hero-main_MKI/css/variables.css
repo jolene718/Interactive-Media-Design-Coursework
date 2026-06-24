@@ -1,0 +1,85 @@
+/* ===== Circuit Hero Design Tokens ===== */
+:root {
+  /* Primary Colors */
+  --color-gold: #FFD700;
+  --color-gold-hover: #E6B800;
+  --color-warm-orange: #FF8C42;
+  --color-warm-orange-deep: #E87324;
+  --color-sky-blue: #5BC0EB;
+  --color-grass-green: #7BC950;
+
+  /* Neutral / Background */
+  --color-bg-cream: #FAF6EE;
+  --color-bg-warm-white: #FFF8E7;
+  --color-bg-card: #FFFFFF;
+  --color-border: #E8DDD0;
+
+  /* Text */
+  --color-text-primary: #2A1F1A;
+  --color-text-secondary: #6B5B52;
+  --color-text-muted: #5D4037;
+  --color-text-accent: #E87324;
+  --color-text-light: #FFF8E7;
+
+  /* Scene Colors */
+  --color-night-sky: #1A1A3E;
+  --color-danger: #E74C3C;
+  --color-danger-bg: #FFF0EC;
+  --color-danger-border: #F0C7BC;
+  --color-soft-pink: #FFB5C2;
+
+  /* Card Feature Colors */
+  --color-card-flow-bg: #FFF4D6;
+  --color-card-flow-border: #F2D985;
+  --color-card-safe-bg: #E7F6DA;
+  --color-card-safe-border: #AEDB8D;
+  --color-card-story-bg: #E0F4FF;
+  --color-card-story-border: #9BD5EF;
+
+  /* Typography */
+  --font-primary: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-pixel: 'Press Start 2P', monospace;
+  --font-terminal: 'VT323', monospace;
+
+  /* Font Sizes */
+  --fs-hero: 64px;
+  --fs-h1: 48px;
+  --fs-h2: 20px;
+  --fs-h3: 18px;
+  --fs-body: 15px;
+  --fs-body-sm: 14px;
+  --fs-body-xs: 13px;
+  --fs-caption: 12.5px;
+  --fs-label: 10px;
+  --fs-pixel: 8px;
+
+  /* Spacing */
+  --page-padding-x: 340px;
+  --container-width: 1240px;
+  --gap-xs: 4px;
+  --gap-sm: 8px;
+  --gap-md: 12px;
+  --gap-lg: 18px;
+  --gap-xl: 28px;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 14px;
+  --radius-2xl: 18px;
+  --radius-3xl: 22px;
+  --radius-full: 999px;
+
+  /* Shadows */
+  --shadow-card: 0 2px 5px rgba(93,64,55,0.05), 0 1px 0 rgba(93,64,55,0.06);
+  --shadow-btn: 0 3px 0 #3E2A24;
+  --shadow-btn-gold: 0 3px 0 #E6B800, 0 6px 20px rgba(255,215,0,0.3);
+  --shadow-elevated: 0 28px 52px rgba(93,64,55,0.28), 0 4px 0 rgba(93,64,55,0.06);
+
+  /* Workbench Sizes */
+  --panel-left-width: 220px;
+  --panel-right-width: 180px;
+  --topbar-height: 70px;
+  --bottombar-height: 72px;
+}
