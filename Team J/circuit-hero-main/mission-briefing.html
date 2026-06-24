@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mission Briefing 1-1 — Circuit Hero</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/mission-briefing.css">
+</head>
+<body>
+  <div class="page-wrapper page-bg-gradient">
+    <div class="page-content" style="padding: 0 400px;">
+
+      <!-- Header -->
+      <header class="site-header">
+        <a href="story-map.html" class="header-left" style="gap: 10px;">
+          <div class="btn btn-secondary btn-sm" style="padding: 8px 14px;">
+            <img src="assets/icons/arrow-back.svg" alt="" width="14" height="14">
+            Back
+          </div>
+        </a>
+        <div class="header-right">
+          <div class="header-actions">
+            <div class="level-name">
+              <span class="level-id pixel-label" id="levelId">LEVEL 1-1</span>
+              <span class="level-title" id="levelTitle">First Light</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="divider"></div>
+
+      <!-- Main Content -->
+      <div class="briefing-main">
+
+        <!-- Cutscene Area -->
+        <div class="cutscene">
+          <div class="cutscene-scene">
+            <img src="assets/images/night-scene.png" alt="Mission scene" id="cutsceneImage" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="cutscene-badge">
+            <span class="badge-dot"></span>
+            <span class="pixel-label" id="cutsceneBadge">CH.01 . SCENE 01 . NIGHT</span>
+          </div>
+          <div class="cutscene-progress">
+            <span class="progress-dot active"></span>
+            <span class="progress-dot"></span>
+            <span class="progress-dot"></span>
+          </div>
+        </div>
+
+        <!-- Dialogue Box -->
+        <div class="dialogue-box">
+          <div class="dialogue-portrait">
+            <div class="portrait-circle">
+              <img src="assets/images/luna-portrait.png" alt="Luna" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+          </div>
+          <div class="dialogue-pointer"></div>
+          <div class="dialogue-content">
+            <div class="dialogue-name pixel-label" id="dialogueSpeaker">LUNA . NIGHT LIGHT OWNER</div>
+            <div class="dialogue-text terminal-text" id="dialogueText"></div>
+          </div>
+        </div>
+
+        <!-- Objectives Card -->
+        <div class="objectives-card">
+          <div class="objective-col">
+            <div class="objective-header">
+              <span class="objective-dot dot-orange"></span>
+              <span class="objective-label pixel-label">GOAL</span>
+            </div>
+            <p class="objective-text" id="goalText"><strong>Build a complete circuit to light up the bulb.</strong></p>
+          </div>
+          <div class="objective-col">
+            <div class="objective-header">
+              <span class="objective-dot dot-blue"></span>
+              <span class="objective-label pixel-label">AVAILABLE PARTS</span>
+            </div>
+            <div class="component-pills" id="componentPills">
+              <span class="comp-pill"><svg width="14" height="14" viewBox="0 0 24 16"><rect x="2" y="2" width="20" height="12" rx="3" fill="#A0A0A0" stroke="#5D4037" stroke-width="2"/><rect x="22" y="5" width="4" height="6" rx="1" fill="#C0C0C0" stroke="#5D4037" stroke-width="1.5"/></svg> Battery x1</span>
+              <span class="comp-pill"><svg width="14" height="14" viewBox="0 0 16 24"><circle cx="8" cy="10" r="8" fill="#E0E0E0" stroke="#5D4037" stroke-width="2"/><rect x="5" y="17" width="6" height="5" rx="1" fill="#A0A0A0" stroke="#5D4037" stroke-width="1.5"/></svg> Bulb x1</span>
+              <span class="comp-pill">Wire (unlimited)</span>
+            </div>
+          </div>
+          <div class="objective-col">
+            <div class="objective-header">
+              <span class="objective-dot dot-gold"></span>
+              <span class="objective-label pixel-label">3-STAR TARGET</span>
+            </div>
+            <div class="stars" style="margin: 8px 0;">
+              <svg class="star star-filled" viewBox="0 0 18 18"><path d="M9 1l2.2 4.5 4.8.7-3.5 3.4.8 4.9L9 12.2 4.7 14.5l.8-4.9L2 6.2l4.8-.7z" fill="currentColor"/></svg>
+              <svg class="star star-filled" viewBox="0 0 18 18"><path d="M9 1l2.2 4.5 4.8.7-3.5 3.4.8 4.9L9 12.2 4.7 14.5l.8-4.9L2 6.2l4.8-.7z" fill="currentColor"/></svg>
+              <svg class="star star-filled" viewBox="0 0 18 18"><path d="M9 1l2.2 4.5 4.8.7-3.5 3.4.8 4.9L9 12.2 4.7 14.5l.8-4.9L2 6.2l4.8-.7z" fill="currentColor"/></svg>
+            </div>
+            <p class="objective-text" style="font-size: 13px;">Finish in under 2 minutes with no hints.</p>
+          </div>
+        </div>
+
+        <!-- Tip Bar -->
+        <div class="tip-bar">
+          <span class="tip-icon">
+            <img src="assets/icons/logo-lightning.svg" alt="" width="18" height="18">
+          </span>
+          <span class="tip-text" id="tipText">Sparky will guide you through the first level step by step.
+            Press <span class="kbd">SPACE</span> to skip dialogue.
+          </span>
+        </div>
+
+        <!-- Action Bar -->
+        <div class="action-bar">
+          <a href="story-map.html" class="action-skip">Skip Intro</a>
+          <a href="workbench.html?level=1-1" class="btn btn-cta" id="startBtn">
+            <img src="assets/icons/logo-lightning.svg" alt="" width="18" height="18">
+            Start Building!
+            <img src="assets/icons/arrow-back.svg" alt="" width="16" height="16" style="transform: scaleX(-1);">
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <script src="js/data/level-config.js"></script>
+  <script src="js/data/api-client.js"></script>
+  <script src="js/data/progress-store.js"></script>
+  <script src="js/components/onboarding-guide.js"></script>
+  <script src="js/pages/mission-briefing.js"></script>
+  <script src="js/game/circuit-engine.js"></script>
+</body>
+</html>

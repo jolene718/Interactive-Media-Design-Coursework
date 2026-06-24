@@ -1,0 +1,58 @@
+# Dependencies
+node_modules/
+
+# Local runtime data
+/data/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Logs and debug output
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+
+# Build / coverage / cache
+dist/
+build/
+coverage/
+.cache/
+.parcel-cache/
+
+# Generated local review artifacts
+docs/prd-extracted.txt
+docs/functional-gap-audit.md
+docs/site-evaluation-and-skills.md
+
+# Local source documents not needed for runtime
+Circuit Hero — 产品需求文档 (PRD) 副本.pdf
+
+# Temporary files and debug scripts
+111
+Circuit
+data-temp/
+
+# Claude Code artifacts
+.claude/
+
+# Browser test artifacts
+test-results/
+playwright-report/
+screenshots/
+*.png.tmp

@@ -1,0 +1,192 @@
+/* ===== Login Page ===== */
+.login-main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 0;
+  position: relative;
+}
+
+/* Floating stars */
+.floating-stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.float-star {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: float-drift 8s ease-in-out infinite;
+}
+
+.float-star.s1 { background: #FFD700; box-shadow: 0 0 10px #FFD70080; top: 15%; left: 10%; animation-delay: 0s; }
+.float-star.s2 { background: #FF8C42; box-shadow: 0 0 10px #FF8C4280; top: 25%; right: 15%; animation-delay: 1s; width: 6px; height: 6px; }
+.float-star.s3 { background: #5BC0EB; box-shadow: 0 0 10px #5BC0EB80; top: 60%; left: 8%; animation-delay: 2s; }
+.float-star.s4 { background: #FFB5C2; box-shadow: 0 0 10px #FFB5C280; bottom: 20%; right: 12%; animation-delay: 3s; width: 10px; height: 10px; }
+.float-star.s5 { background: #FFD700; box-shadow: 0 0 8px #FFD70060; top: 40%; left: 20%; animation-delay: 4s; width: 5px; height: 5px; }
+.float-star.s6 { background: #5BC0EB; box-shadow: 0 0 8px #5BC0EB60; bottom: 35%; left: 30%; animation-delay: 5s; width: 6px; height: 6px; }
+.float-star.s7 { background: #FF8C42; box-shadow: 0 0 8px #FF8C4260; top: 30%; right: 25%; animation-delay: 6s; width: 5px; height: 5px; }
+.float-star.s8 { background: #7BC950; box-shadow: 0 0 8px #7BC95060; bottom: 15%; left: 25%; animation-delay: 7s; width: 7px; height: 7px; }
+
+@keyframes float-drift {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.6; }
+  25% { transform: translateY(-20px) translateX(10px); opacity: 1; }
+  50% { transform: translateY(-10px) translateX(-5px); opacity: 0.8; }
+  75% { transform: translateY(-25px) translateX(8px); opacity: 1; }
+}
+
+/* Login Card */
+.login-card {
+  width: 460px;
+  padding: 38px 38px 48px;
+  position: relative;
+}
+
+.login-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.login-terminal-label {
+  font-size: 8px;
+  color: var(--color-text-accent);
+  letter-spacing: 0.05em;
+}
+
+.login-gold-star {
+  transform: rotate(15deg);
+}
+
+/* Tabs */
+.login-tabs {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 12px;
+}
+
+.login-tab {
+  font-size: var(--fs-body-sm);
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  padding: 0 0 12px;
+  position: relative;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.login-tab.active {
+  color: var(--color-text-primary);
+}
+
+.login-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--color-text-primary);
+  border-radius: 2px;
+}
+
+/* Form */
+.form-field {
+  margin-bottom: 18px;
+}
+
+.form-label {
+  display: block;
+  font-size: var(--fs-body-sm);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 8px;
+}
+
+.form-input {
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  background: #FBFAF5;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-body);
+  color: var(--color-text-primary);
+  transition: border-color 0.2s;
+}
+
+.form-input:focus {
+  border-color: var(--color-text-muted);
+}
+
+.form-input::placeholder {
+  color: #B5A89A;
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-secondary);
+}
+
+.form-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.form-checkbox input {
+  display: none;
+}
+
+.checkbox-custom {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--color-border);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-checkbox input:checked + .checkbox-custom {
+  background: var(--color-text-primary);
+  border-color: var(--color-text-primary);
+}
+
+.form-checkbox input:checked + .checkbox-custom::after {
+  content: '✓';
+  color: white;
+  font-size: 12px;
+}
+
+.form-link {
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-accent);
+}
+
+.login-submit {
+  width: 100%;
+  height: 52px;
+  font-size: 16px;
+}
+
+.hidden {
+  display: none !important;
+}

@@ -1,0 +1,271 @@
+/* ===== Profile Page ===== */
+.profile-page {
+  padding: 0 260px;
+  min-height: 100vh;
+}
+
+.profile-main {
+  display: grid;
+  grid-template-columns: 330px 1fr;
+  gap: 34px;
+  padding: 32px 0;
+}
+
+.profile-card {
+  min-height: 620px;
+  padding: 36px 30px;
+  text-align: center;
+}
+
+.avatar-frame {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 22px;
+  border: 2px solid var(--color-text-primary);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-warm-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-core {
+  width: 92px;
+  height: 92px;
+  border-radius: var(--radius-xl);
+  background: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-btn-gold);
+}
+
+.profile-name {
+  font-size: 28px;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.profile-title {
+  font-size: var(--fs-body);
+  color: var(--color-text-secondary);
+  font-weight: 700;
+}
+
+.profile-meter {
+  margin-top: 34px;
+  padding: 16px;
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-warm-white);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.profile-panel {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-text-primary);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-btn);
+  padding: 24px 28px;
+}
+
+.panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.panel-heading h2 {
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.progress-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.progress-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(232,221,208,0.8);
+}
+
+.progress-row:last-child {
+  border-bottom: none;
+}
+
+.progress-title {
+  font-size: var(--fs-body);
+  font-weight: 700;
+}
+
+.progress-status {
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-secondary);
+}
+
+.progress-stars {
+  min-width: 58px;
+  letter-spacing: 2px;
+  text-align: right;
+}
+
+.badge-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(120px, 1fr));
+  gap: 24px 34px;
+}
+
+.badge-item {
+  text-align: center;
+}
+
+.badge-icon {
+  width: 74px;
+  height: 74px;
+  margin: 0 auto 10px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-warm-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge-item.locked {
+  opacity: 0.45;
+}
+
+.badge-item.locked .badge-icon {
+  filter: grayscale(1);
+}
+
+.badge-name {
+  font-size: var(--fs-body-sm);
+  font-weight: 700;
+}
+
+.badge-locked {
+  color: var(--color-text-secondary);
+  text-decoration: underline;
+}
+
+.profile-footer {
+  display: flex;
+  justify-content: center;
+  padding: 0 0 28px;
+}
+
+.profile-tabs {
+  margin-top: auto;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26,26,62,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  backdrop-filter: blur(4px);
+}
+
+.encyclopedia-modal {
+  width: min(760px, calc(100vw - 48px));
+  background: var(--color-bg-card);
+  border: 2px solid var(--color-text-primary);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-elevated);
+  padding: 26px;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.modal-header h2 {
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.modal-close {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-warm-white);
+  cursor: pointer;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.component-encyclopedia {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.encyclopedia-card {
+  display: grid;
+  grid-template-columns: 54px 1fr;
+  gap: 14px;
+  padding: 16px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-warm-white);
+}
+
+.encyclopedia-card h3 {
+  font-size: var(--fs-body);
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+
+.encyclopedia-card p {
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+@media (max-width: 1280px) {
+  .profile-page {
+    padding: 0 80px;
+  }
+}
+
+@media (max-width: 900px) {
+  .profile-page {
+    padding: 0 24px;
+  }
+
+  .profile-main {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-card {
+    min-height: auto;
+  }
+
+  .badge-grid,
+  .component-encyclopedia {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

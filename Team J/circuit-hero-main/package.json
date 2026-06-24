@@ -1,0 +1,16 @@
+{
+  "name": "circuit-hero",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Circuit Hero static frontend with a local Express API.",
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "node tests/progress-store.test.js && node tests/undo-redo.test.js && node tests/wire-geometry.test.js && node tests/particle-system.test.js && node tests/circuit-engine.test.js && node tests/sandbox-config.test.js && node tests/profile-model.test.js && node tests/auth-api.test.js",
+    "test:e2e": "node tests/e2e-flow.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.19.2",
+    "playwright-core": "^1.60.0"
+  }
+}

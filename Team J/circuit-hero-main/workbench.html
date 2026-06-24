@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1-1 First Light — Circuit Hero</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/workbench.css">
+  <style>
+    /* 确保模态框和气泡的关闭行为流畅 */
+    .modal-overlay.hidden { display: none; }
+    .sparky-bubble {
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+    .sparky-bubble.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    /* 增加Stage提示关闭按钮的明显反馈 */
+    .stage-help-close {
+      cursor: pointer;
+      background: rgba(0,0,0,0.5);
+      border: none;
+      color: white;
+      border-radius: 12px;
+      width: 20px;
+      height: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+    .stage-help-close:hover {
+      background: rgba(0,0,0,0.8);
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper page-bg-gradient">
+    <div class="page-content" style="padding: 0 260px; height: 100vh;">
+
+      <!-- Top Bar -->
+      <div class="top-bar">
+        <div class="top-left">
+          <a href="mission-briefing.html?level=1-1" class="btn btn-secondary btn-sm back-btn" id="backBtn">
+            <img src="assets/icons/arrow-back.svg" alt="" width="14" height="14">
+            Back
+          </a>
+          <div class="level-info">
+            <span class="level-id-badge pixel-label" id="levelIdBadge">1-1</span>
+            <span class="level-name-text" id="levelNameText">First Light</span>
+          </div>
+        </div>
+        <div class="top-center">
+          <div class="timer-pill">
+            <span class="timer-dot"></span>
+            <span class="timer-text terminal-text" id="timerDisplay">00:00</span>
+          </div>
+        </div>
+        <div class="top-right">
+          <button class="btn btn-secondary btn-sm hint-btn" id="hintBtn">
+            <img src="assets/icons/help.svg" alt="" width="16" height="16">
+            Hint
+            <span class="hint-cost">-1 star</span>
+          </button>
+          <div class="stars" id="starDisplay">
+            <svg class="star star-empty" viewBox="0 0 18 18"><path d="M9 1l2.2 4.5 4.8.7-3.5 3.4.8 4.9L9 12.2 4.7 14.5l.8-4.9L2 6.2l4.8-.7z" fill="currentColor"/></svg>
+            <svg class="star star-empty" viewBox="0 0 18 18"><path d="M9 1l2.2 4.5 4.8.7-3.5 3.4.8 4.9L9 12.2 4.7 14.5l.8-4.9L2 6.2l4.8-.7z" fill="currentColor"/></svg>
+            <svg class="star star-empty" viewBox="0 0 18 18"><path d="M9 1l2.2 4.5 4.8.7-3.5 3.4.8 4.9L9 12.2 4.7 14.5l.8-4.9L2 6.2l4.8-.7z" fill="currentColor"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Main Area -->
+      <div class="main-area">
+        <!-- Left Panel: Components -->
+        <div class="panel panel-left">
+          <div class="panel-header">
+            <span class="panel-title">Components</span>
+            <span class="panel-label pixel-label">PARTS BIN</span>
+          </div>
+          <div class="component-list" id="componentList">
+            <div class="component-item" data-type="battery" draggable="true">
+              <div class="comp-icon comp-icon-battery">
+                <svg width="24" height="16" viewBox="0 0 32 20"><rect x="2" y="3" width="24" height="14" rx="3" fill="#A0A0A0" stroke="#5D4037" stroke-width="2"/><rect x="26" y="6" width="4" height="8" rx="1" fill="#C0C0C0" stroke="#5D4037" stroke-width="1.5"/><text x="8" y="14" fill="#E74C3C" font-size="10" font-weight="bold">+</text><text x="20" y="14" fill="#333" font-size="10" font-weight="bold">-</text></svg>
+              </div>
+              <span class="comp-name">Battery</span>
+              <span class="comp-count">x1</span>
+            </div>
+            <div class="component-item" data-type="bulb" draggable="true" id="bulbPanelItem">
+              <div class="comp-icon comp-icon-bulb">
+                <svg width="16" height="22" viewBox="0 0 20 28"><ellipse cx="10" cy="11" rx="8" ry="9" fill="#E0E0E0" stroke="#5D4037" stroke-width="2"/><rect x="6" y="19" width="8" height="5" rx="1" fill="#A0A0A0" stroke="#5D4037" stroke-width="1.5"/><line x1="8" y1="20" x2="8" y2="24" stroke="#5D4037" stroke-width="1"/><line x1="10" y1="20" x2="10" y2="24" stroke="#5D4037" stroke-width="1"/><line x1="12" y1="20" x2="12" y2="24" stroke="#5D4037" stroke-width="1"/></svg>
+              </div>
+              <span class="comp-name">Bulb</span>
+              <span class="comp-count">x1</span>
+            </div>
+            <div class="component-item" data-type="wire" draggable="false">
+              <div class="comp-icon">
+                <svg width="20" height="4" viewBox="0 0 28 4"><rect width="28" height="4" rx="2" fill="#A0A0A0" stroke="#5D4037" stroke-width="1"/></svg>
+              </div>
+              <span class="comp-name">Wire</span>
+              <span class="comp-count">∞</span>
+            </div>
+            <div class="component-item locked" data-type="switch" draggable="false">
+              <div class="comp-icon comp-icon-switch">
+                <svg width="20" height="16" viewBox="0 0 28 20"><rect x="2" y="2" width="24" height="16" rx="3" fill="#A0A0A0" stroke="#5D4037" stroke-width="2" opacity="0.4"/><line x1="8" y1="14" x2="18" y2="5" stroke="#5D4037" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/></svg>
+              </div>
+              <span class="comp-name" style="opacity:0.5">Switch</span>
+              <span class="comp-lock">
+                <img src="assets/icons/lock.svg" alt="Locked" width="12" height="12">
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Center Stage -->
+        <div class="stage" id="stage">
+          <div class="stage-instruction" id="stageInstruction">
+            <span class="terminal-text">Drag components onto the board. Click <svg width="12" height="12" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" fill="#5D4037"/></svg> ports to wire.</span>
+            <button class="stage-help-close" id="helpClose">✕</button>
+          </div>
+          <div class="stage-grid" id="stageGrid">
+            <canvas id="gridCanvas"></canvas>
+            <canvas id="wireCanvas"></canvas>
+            <canvas id="particleCanvas"></canvas>
+            <div id="componentsLayer"></div>
+          </div>
+          <!-- Sparky Tutorial Bubble -->
+          <div class="sparky-bubble hidden" id="sparkyBubble">
+            <div class="sparky-avatar">
+              <img src="assets/images/sparky-sprite.png" alt="Sparky" style="width:40px;height:40px;object-fit:contain;">
+            </div>
+            <div class="sparky-text" id="sparkyText"></div>
+            <button class="sparky-continue" id="sparkyContinue">I got it!</button>
+          </div>
+        </div>
+
+        <!-- Right Panel: Tools -->
+        <div class="panel panel-right">
+          <div class="panel-header">
+            <span class="panel-title">Tools</span>
+            <span class="panel-label pixel-label">WORKBENCH</span>
+          </div>
+          <div class="tool-list">
+            <button class="tool-btn" id="undoBtn" title="Undo">
+              <img src="assets/icons/undo.svg" alt="" width="18" height="18">
+              <span>Undo</span>
+              <span class="kbd">Ctrl+Z</span>
+            </button>
+            <button class="tool-btn" id="redoBtn" title="Redo">
+              <img src="assets/icons/redo.svg" alt="" width="18" height="18">
+              <span>Redo</span>
+              <span class="kbd">Ctrl+Y</span>
+            </button>
+            <button class="tool-btn" id="deleteBtn" title="Delete">
+              <img src="assets/icons/delete.svg" alt="" width="18" height="18">
+              <span>Delete</span>
+              <span class="kbd">Del</span>
+            </button>
+            <div class="tool-divider"></div>
+            <button class="tool-btn tool-danger" id="clearBtn" title="Clear All">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Clear All</span>
+            </button>
+            <button class="tool-btn" id="saveDesignBtn" style="display:none;" title="Save current sandbox design">
+              <span>Save Design</span>
+            </button>
+            <button class="tool-btn" id="shareLinkBtn" style="display:none;" title="Share current sandbox design">
+              <span>Share Link</span>
+            </button>
+            <button class="tool-btn" id="loadDesignBtn" style="display:none;" title="View and load my saved designs">
+              <span>My Design</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="bottom-bar">
+        <div class="bottom-left">
+          <span class="status-dot" id="statusDot"></span>
+          <span class="status-text terminal-text" id="statusText">Circuit open — wire up both terminals to complete the loop.</span>
+        </div>
+        <div class="bottom-center">
+          <button class="btn power-btn" id="powerBtn">
+            <img src="assets/icons/logo-lightning.svg" alt="" width="20" height="20">
+            Power On!
+          </button>
+        </div>
+        <div class="bottom-right">
+          <span class="hint-text">Press <span class="kbd">SPACE</span> to power on</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div class="modal-overlay hidden" id="successModal">
+    <div class="modal-card success-modal">
+      <div class="success-header">
+        <div class="success-icon">&#127775;</div>
+        <h2 class="success-title">Circuit Complete!</h2>
+      </div>
+      <div class="success-stars" id="resultStars"></div>
+      <div class="success-dialogue" id="successDialogue"></div>
+      <div class="knowledge-card" id="knowledgeCard">
+        <div class="knowledge-title" id="knowledgeTitle">
+          <img src="assets/icons/logo-lightning.svg" alt="" width="16" height="16">
+          Knowledge: Closed Circuit
+        </div>
+        <ul class="knowledge-list" id="knowledgeList">
+          <li>Current flows from battery (+) terminal</li>
+          <li>Passes through a load (like a bulb)</li>
+          <li>Returns to battery (-) terminal</li>
+          <li>This complete path is a "closed circuit"</li>
+          <li>The circuit must be closed for current to flow</li>
+        </ul>
+        <p class="knowledge-motto" id="knowledgeMotto">Remember: electricity needs a complete loop!</p>
+      </div>
+      <div class="success-actions">
+        <a href="story-map.html" class="btn btn-secondary">Back to Map</a>
+        <a href="#" class="btn btn-cta" onclick="location.reload()">Play Again</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data/level-config.js"></script>
+  <script src="js/data/api-client.js"></script>
+  <script src="js/data/progress-store.js"></script>
+  <script src="js/game/grid.js"></script>
+  <script src="js/game/components.js"></script>
+  <script src="js/game/drag-drop.js"></script>
+  <script src="js/game/wire-geometry.js"></script>
+  <script src="js/game/wiring.js"></script>
+  <script src="js/game/circuit-engine.js"></script>
+  <script src="js/game/particle-system.js"></script>
+  <script src="js/game/undo-redo.js"></script>
+  <script src="js/game/success-feedback.js"></script>
+  <script src="js/components/tutorial.js"></script>
+  <script src="js/pages/workbench.js"></script>
+  
+  <!-- 新增内联修复脚本，确保提示框关闭功能正常工作 -->
+  <script>
+    (function() {
+      // 确保DOM完全加载后绑定独立关闭逻辑，解决“I got it!”按钮无响应问题
+      document.addEventListener('DOMContentLoaded', function() {
+        // 1. 修复 Sparky 提示气泡关闭 (核心修复)
+        const sparkyBubble = document.getElementById('sparkyBubble');
+        const sparkyContinueBtn = document.getElementById('sparkyContinue');
+        
+        // 强制关闭气泡的函数 (多重保障)
+        function closeSparkyBubble() {
+          if (sparkyBubble) {
+            sparkyBubble.classList.add('hidden');
+            // 额外触发自定义事件，让其他模块同步状态 (如果有监听tutorial关闭)
+            window.dispatchEvent(new CustomEvent('sparky-closed'));
+          }
+        }
+        
+        if (sparkyContinueBtn) {
+          // 移除可能存在的旧监听器，防止重复绑定
+          const newBtn = sparkyContinueBtn.cloneNode(true);
+          sparkyContinueBtn.parentNode.replaceChild(newBtn, sparkyContinueBtn);
+          newBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            e.preventDefault();
+            closeSparkyBubble();
+          });
+        }
+        
+        // 额外点击背景半透明区域不关闭，但点击X关闭? 气泡本身没有X，但如果有任何想通过点击气泡外部关闭? 不需要，但确保其他方式: 
+        // 如果用户再次点击Hint或者其他操作时也可能关闭旧气泡，为了保证体验，当再次打开Hint时也应该先关闭旧气泡，但我们这里附加一个监听: 
+        // 让 Stage 点击其他地方不会误关，不过保持简单，只确保“I got it”关闭即可。
+        
+        // 2. 修复 Stage 顶部帮助提示的关闭按钮 (如果有“✕”按钮无反应情况)
+        const helpCloseBtn = document.getElementById('helpClose');
+        const stageInstructionDiv = document.getElementById('stageInstruction');
+        if (helpCloseBtn) {
+          // 克隆移除旧监听
+          const newHelpClose = helpCloseBtn.cloneNode(true);
+          helpCloseBtn.parentNode.replaceChild(newHelpClose, helpCloseBtn);
+          newHelpClose.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (stageInstructionDiv) {
+              stageInstructionDiv.style.display = 'none';
+            }
+          });
+        }
+        
+        // 3. 增强错误反馈时的错误模态框关闭 (在电路错误时调用的错误提示，由于原生alert或自定义，如果不响应，也支持）
+        // 注：workbench.js原有的alert或toast风格错误一般默认可关闭，但为了更优雅，我们确保每次powerOn错误时的提示可以有一个明确的“确定”关闭。
+        // 由于底层js实现可能用了 alert，或自定义提示框，不用修改，但如果自定义模态框绑定了close事件，优化一下:
+        // 通用拦截任何模态框遮罩点击可能导致问题，但主要不是核心。然而我们可以添加全局的提示关闭增强：
+        // 为了让成功模态框也能有很好的关闭 (点击背景不关闭)，但现有的结构已经有了Back/Play Again，可以不处理。
+        
+        // 额外：处理当点击“Power On”且电路错误时，某些自定义提示框没有关闭按钮或无响应的情况。
+        // 由于原系统中可能在 circuit-engine.js 或 success-feedback.js 调用 showErrorHint，我们需要确保该错误提示框可以被关闭。
+        // 注入一个全局方法确保如果有自定义错误浮层，则自动绑定关闭按钮。
+        // 通过 MutationObserver 监测动态添加的错误提示框，确保其关闭逻辑。
+        function enhanceDynamicModals() {
+          // 寻找任何可能出现的 .error-toast, .alert-modal 等自定义类
+          const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+              mutation.addedNodes.forEach((node) => {
+                if (node.nodeType === 1) {
+                  // 检查是否是错误提示容器 (根据实际样式名称增强)
+                  if (node.classList && (node.classList.contains('error-popup') || node.classList.contains('toast-error') || node.id === 'errorHintModal')) {
+                    const closeBtn = node.querySelector('.close-btn, .ok-btn, .confirm-btn');
+                    if (closeBtn) {
+                      closeBtn.addEventListener('click', () => {
+                        node.remove();
+                      });
+                    } else {
+                      // 自动增加一个关闭按钮或延时自动关闭
+                      setTimeout(() => {
+                        if (node && node.remove) node.remove();
+                      }, 3000);
+                    }
+                  }
+                  // 针对于 Sparky 气泡再次确保显隐 (若其他模块动态生成)
+                  if (node.classList && node.classList.contains('sparky-bubble') && node.id === 'sparkyBubble') {
+                    const continueBtnDynamic = node.querySelector('#sparkyContinue');
+                    if (continueBtnDynamic && !continueBtnDynamic.hasListenerAttached) {
+                      continueBtnDynamic.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        node.classList.add('hidden');
+                      });
+                      continueBtnDynamic.hasListenerAttached = true;
+                    }
+                  }
+                }
+              });
+            });
+          });
+          observer.observe(document.body, { childList: true, subtree: true });
+        }
+        enhanceDynamicModals();
+        
+        // 4. 全局委托处理任何带有“I got it”文本的按钮无反应情况，也包括任何关闭类按钮
+        document.body.addEventListener('click', function(e) {
+          const target = e.target;
+          // 匹配任何“I got it”按钮或者类似继续按钮，文字匹配或class包含sparky-continue
+          if (target && (target.classList && target.classList.contains('sparky-continue')) || 
+              (target.innerText && target.innerText.trim() === 'I got it!')) {
+            e.preventDefault();
+            e.stopPropagation();
+            // 向上查找到 .sparky-bubble 进行关闭
+            let bubble = target.closest('.sparky-bubble');
+            if (bubble) {
+              bubble.classList.add('hidden');
+              // 触发自定义事件以便workbench.js同步清除任何教程状态
+              window.dispatchEvent(new CustomEvent('sparky-closed'));
+            } else {
+              // 如果不存在父级气泡，尝试通过ID获取
+              const bubbleById = document.getElementById('sparkyBubble');
+              if (bubbleById) bubbleById.classList.add('hidden');
+            }
+          }
+          
+          // 针对电路错误时使用任何提示框的“关闭”/“确定”按钮处理 (其他模态框同理)
+          if (target && (target.classList && target.classList.contains('modal-close-btn')) || 
+              target.closest('.error-modal-close') || (target.innerText === 'OK' || target.innerText === 'Got it')) {
+            const possibleModal = target.closest('.modal-overlay, .error-toast-container, .custom-alert');
+            if (possibleModal) {
+              if (possibleModal.classList) possibleModal.classList.add('hidden');
+              else possibleModal.style.display = 'none';
+            }
+          }
+        });
+        
+        // 5. 为了解决 power on 错误时可能某个内置提示框无反应，手动mock一个更好的错误提示系统, 但保留原生逻辑。但是如果原生alert存在，我们无法干预。
+        // 增强：如果 workbench.js 使用的 showCircuitError 方法依赖于一些没有关闭事件的dom，我们在全局能够捕获并增强。
+        // 监听自定义错误事件（如果底层抛出）
+        window.addEventListener('circuit-error-shown', function(ev) {
+          console.log('电路错误显示，确保可关闭');
+          setTimeout(() => {
+            const errorDiv = document.querySelector('.circuit-error-message, .error-hint');
+            if (errorDiv && !errorDiv.querySelector('.close-btn')) {
+              const closeSpan = document.createElement('button');
+              closeSpan.innerText = '✕';
+              closeSpan.style.position = 'absolute';
+              closeSpan.style.right = '8px';
+              closeSpan.style.top = '4px';
+              closeSpan.style.cursor = 'pointer';
+              closeSpan.style.background = 'none';
+              closeSpan.style.border = 'none';
+              closeSpan.style.fontSize = '16px';
+              closeSpan.addEventListener('click', () => errorDiv.remove());
+              errorDiv.style.position = 'relative';
+              errorDiv.appendChild(closeSpan);
+            }
+          }, 100);
+        });
+        
+        // 额外: 提供单击空白区域自动关闭错误浮层的便利 (可选)
+        // 但为了避免副作用，只处理一些临时提示。
+      });
+    })();
+  </script>
+</body>
+</html>

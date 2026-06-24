@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile — Circuit Hero</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+  <div class="page-wrapper page-bg-gradient">
+    <div class="page-content profile-page">
+      <header class="site-header">
+        <a href="index.html" class="header-left">
+          <div class="logo-icon">
+            <img src="assets/icons/logo-lightning.svg" alt="Circuit Hero logo" width="20" height="20">
+          </div>
+          <div class="logo-text">
+            <span class="logo-title">Circuit Hero</span>
+            <span class="logo-subtitle">QHE6102 . TEAM J</span>
+          </div>
+        </a>
+        <div class="header-right">
+          <a href="story-map.html" class="btn btn-secondary btn-sm">
+            <img src="assets/icons/arrow-back.svg" alt="" width="14" height="14">
+            Back to Map
+          </a>
+        </div>
+      </header>
+
+      <div class="divider"></div>
+
+      <main class="profile-main">
+        <aside class="profile-card card-elevated">
+          <div class="avatar-frame">
+            <div class="avatar-core">
+              <img src="assets/icons/logo-lightning.svg" alt="" width="54" height="54">
+            </div>
+          </div>
+          <h1 class="profile-name" id="profileName">Guest</h1>
+          <p class="profile-title" id="profileTitle">Apprentice Electrician</p>
+          <div class="profile-meter">
+            <span class="pixel-label">CHAPTERS</span>
+            <strong id="chapterCount">0 / 6</strong>
+          </div>
+        </aside>
+
+        <section class="profile-stack">
+          <section class="profile-panel">
+            <div class="panel-heading">
+              <h2>Learning Progress</h2>
+              <span class="pill pill-gold" id="progressPill">SYNCED</span>
+            </div>
+            <div class="progress-list" id="progressList"></div>
+          </section>
+
+          <section class="profile-panel">
+            <div class="panel-heading">
+              <h2>Badges</h2>
+              <span class="pill pill-outline">MILESTONES</span>
+            </div>
+            <div class="badge-grid" id="badgeGrid"></div>
+          </section>
+        </section>
+      </main>
+
+      <div class="profile-footer">
+        <button class="btn btn-cta" id="encyclopediaBtn">
+          <img src="assets/icons/bulb.svg" alt="" width="18" height="18">
+          View Component Encyclopedia
+        </button>
+      </div>
+
+      <div class="tab-bar profile-tabs">
+        <div class="tab-item" data-target="story-map.html">
+          <img src="assets/icons/tab-map.svg" alt="" width="18" height="18">
+          Story Map
+        </div>
+        <div class="tab-item" data-target="workbench.html?level=sandbox">
+          <img src="assets/icons/tab-sandbox.svg" alt="" width="18" height="18">
+          Sandbox
+        </div>
+        <div class="tab-item active">
+          <img src="assets/icons/tab-profile.svg" alt="" width="18" height="18">
+          My Profile
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay hidden" id="encyclopediaModal">
+    <div class="encyclopedia-modal">
+      <div class="modal-header">
+        <h2>Component Encyclopedia</h2>
+        <button class="modal-close" id="encyclopediaClose" aria-label="Close">×</button>
+      </div>
+      <div class="component-encyclopedia" id="componentEncyclopedia"></div>
+    </div>
+  </div>
+
+  <script src="js/data/api-client.js"></script>
+  <script src="js/data/level-config.js"></script>
+  <script src="js/data/progress-store.js"></script>
+  <script src="js/data/profile-model.js"></script>
+  <script src="js/pages/profile.js"></script>
+</body>
+</html>
